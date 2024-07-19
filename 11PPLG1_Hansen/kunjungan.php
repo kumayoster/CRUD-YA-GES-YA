@@ -8,7 +8,7 @@
     <script>
         function hapus(id) {
             if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-                window.location.href = 'koneksi.php?idPasien=' + id;
+                window.location.href = 'koneksi.php?idKunjungan=' + id;
             } else {
                 return false;
             }
@@ -19,13 +19,13 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand">My App</a>
+            <a href="#" class="navbar-brand">Buang Uang</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <ul class="navbar-nav me-auto mb-2 bm-lg-0">
     <li class="nav-item">
             <a href="index.html" class="nav-link mb-2" aria-current="page">home</a>
         </li>
@@ -33,7 +33,7 @@
             <a href="dokter.php" class="nav-link mb-2" aria-current="page">Dokter</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link mb-2" aria-current="page">Pasien</a>
+            <a href="pasien.php" class="nav-link mb-2" aria-current="page">Pasien</a>
         </li>
         <li class="nav-item">
             <a href="kunjungan.php" class="nav-link mb-2" aria-current="page">kunjungan</a>
@@ -46,13 +46,13 @@
 
     <div class="row mt-3">
         <div class="col-sm">
-            <h3>Tabel Pasien</h3>
+            <h3>Tabel Kunjungan</h3>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <a href="tambahpasien.php" class="btn btn-primary btn-sm d-flex justify-content-center">Tambah Data</a>
+            <a href="tambahkunjungan.php" class="btn btn-primary btn-sm d-flex justify-content-center">Tambah Uang Kami</a>
         </div>
     </div>
 
@@ -62,29 +62,30 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>ID Pasien</th>
-                        <th>Nama Pasien</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Alamat</th>
-                        <th>Action</th>
+                        <th>ID Kunjungan</th>
+                        <th>idPasien</th>
+                        <th>idDokter</th>
+                        <th>tanggal</th>
+                        <th>Keluhan</th>
                     </tr>
                 </thead>
                  <tbody>
                     <?php
                     include 'koneksi.php';
                     $no = 1;
-                    $hasil = $koneksi->query("SELECT * FROM pasien");
+                    $hasil = $koneksi->query("SELECT * FROM kunjungan");
                     while ($row = $hasil->fetch_assoc()) {
                     ?>
                     <tr>
                         <td><?= $no++; ?></td>
+                        <td><?= $row['idKunjungan']; ?></td>
                         <td><?= $row['idPasien']; ?></td>
-                        <td><?= $row['nmPasien']; ?></td>
-                        <td><?= $row['jk']; ?></td>
-                        <td><?= $row['alamat']; ?></td>
+                        <td><?= $row['idDokter']; ?></td>
+                        <td><?= $row['tanggal']; ?></td>
+                        <td><?= $row['keluhan']; ?></td>
                         <td>
-                            <a href="editpasien.php?edit=<?= $row['idPasien']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm" onclick="return hapus('<?= $row['idPasien']; ?>')">Hapus</a>
+                            <a href="editkunjungan.php?edit=<?= $row['idKunjungan']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="#" class="btn btn-danger btn-sm" onclick="return hapus('<?= $row['idKunjungan']; ?>')">Hapus</a>
                         </td>
                     </tr>
                     <?php
