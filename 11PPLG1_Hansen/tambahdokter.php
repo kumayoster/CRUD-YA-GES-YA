@@ -11,7 +11,7 @@
         <div class="row mt-3">
             <div class="col-4">
                 <h3>Tambah Data Dokter</h3>
-                <form action="tdokter.php" method="POST">
+                <form action="koneksi.php" method="POST">
                     <div class="form-group">
                         <label for="idDokter">ID Dokter</label>
                         <input type="text" class="form-control mb-3" name="idDokter" placeholder="need your id">

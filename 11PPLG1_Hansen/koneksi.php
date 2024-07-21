@@ -37,6 +37,8 @@ if (isset($_GET['idDokter'])) {
     header("Location: dokter.php");
 }
 
+
+
 // kunjungan
 if (isset($_POST['simpan2'])) {
     $idKunjungan = $_POST['idKunjungan'];
@@ -45,9 +47,7 @@ if (isset($_POST['simpan2'])) {
     $tanggal = $_POST['tanggal'];
     $keluhan = $_POST['keluhan'];
 
-    $koneksi->query("INSERT INTO pasien (idPasien) VALUES ('$idPasien') ON DUPLICATE KEY UPDATE idPasien=idPasien") or die($koneksi->error);
-    $query2 = "INSERT INTO dokter (idDokter) VALUES ('$idDokter') ON DUPLICATE KEY UPDATE idDokter=idDokter";
-    $koneksi->query($query2) or die($koneksi->error);
+
     $query = "INSERT INTO kunjungan (idKunjungan, idPasien, idDokter, tanggal, keluhan) VALUES ('$idKunjungan', '$idPasien', '$idDokter', '$tanggal', '$keluhan') ON DUPLICATE KEY UPDATE tanggal='$tanggal', keluhan='$keluhan'";
     $koneksi->query($query) or die($koneksi->error);
 
