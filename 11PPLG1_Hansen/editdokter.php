@@ -17,11 +17,11 @@
             ?>
             <form action="koneksi.php" method="POST">
                 <div class="form-group">
-                    <label for="idDokter">ID Pasien</label>
+                    <label for="idDokter">ID Dokter</label>
                     <input type="text" class="form-control mb-3" name="idDokter" placeholder="ID Dokter" value="<?= $row['idDokter'] ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="nmDokter">Nama Pasien</label>
+                    <label for="nmDokter">Nama Dokter</label>
                     <input type="text" class="form-control mb-3" name="nmDokter" placeholder="Nama dokter" value="<?= $row['nmDokter'] ?>">
                 </div>
                 <div class="form-group">
@@ -29,7 +29,7 @@
                     <input type="text" class="form-control mb-3" name="spesialisasi" placeholder="Sekil" value="<?= $row['spesialisasi'] ?>">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="noTelp">noTelp</label>
+                    <label for="noTelp">No Telp</label>
                     <textarea class="form-control" name="noTelp" id="noTelp" cols="5" rows="3" placeholder="no telp"><?= $row['noTelp'] ?></textarea>
                 </div>
                 <div class="form-group mt-3">

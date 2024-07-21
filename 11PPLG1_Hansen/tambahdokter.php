@@ -29,7 +29,7 @@
                         <textarea name="noTelp" id="noTelp" cols="5" rows="3" placeholder="no telpnya say" class="form-control"></textarea>
                     </div>
                     <div class="form-group mt-3">
-                        <input type="submit" name="simpan" value="Simpan" class="form-control btn btn-primary">
+                        <input type="submit" name="simpan1" value="Simpan" class="form-control btn btn-primary">
                     </div>
                 </form>
             </div>
