@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group mt-3">
                     <input type="submit" name="simpan1" value="Simpan" class="form-control btn btn-primary">
-                </div>
+                </div>==
             </form>
             <?php } ?>
         </div>
