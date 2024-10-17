@@ -58,40 +58,51 @@
 
     <div class="row mt-3">
         <div class="col">
-            <table class="table table-striped table-hover table-sm">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID Dokter</th>
-                        <th>Nama Dokter</th>
-                        <th>spesialisasi</th>
-                        <th>No Telp</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                 <tbody>
-                    <?php
-                    include 'koneksi.php';
-                    $no = 1;
-                    $hasil = $koneksi->query("SELECT * FROM dokter");
-                    while ($row = $hasil->fetch_assoc()) {
-                    ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $row['idDokter']; ?></td>
-                        <td><?= $row['nmDokter']; ?></td>
-                        <td><?= $row['spesialisasi']; ?></td>
-                        <td><?= $row['noTelp']; ?></td>
-                        <td>
-                            <a href="editdokter.php?edit=<?= $row['idDokter']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm" onclick="return hapus('<?= $row['idDokter']; ?>')">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+        <table class="table table-striped table-hover table-sm">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>ID Dokter</th>
+                <th>Nama Dokter</th>
+                <th>Spesialisasi</th>
+                <th>No. Telepon</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        include 'koneksi.php';  // Include the connection file
+
+        $link = koneksi();
+        // Query to fetch doctor data
+        $query = "SELECT * FROM dokter";
+        $result = mysqli_query($link, $query);
+
+        // Check if there are any rows
+        if ($result && mysqli_num_rows($result) > 0) {
+            $no = 1;  // Row number initialization
+            while ($data = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>{$no}</td>";
+                echo "<td>{$data['idDokter']}</td>";
+                echo "<td>{$data['nmDokter']}</td>";
+                echo "<td>{$data['spesialisasi']}</td>";
+                echo "<td>{$data['noTelp']}</td>";
+                echo "<td>
+                        <a href='editdokter.php?edit={$data['idDokter']}' class='btn btn-warning btn-sm'>Edit</a>
+                        <a href='controller_dokter.php?idDokter={$data['idDokter']}' class='btn btn-danger btn-sm'>Hapus</a>
+                      </td>";
+                echo "</tr>";
+                $no++;  // Increment row number
+            }
+        } else {
+            echo "<tr><td colspan='6'>No data available.</td></tr>";
+        }
+
+        mysqli_close($link);
+        ?>
+        </tbody>
+    </table>
         </div>
     </div>
 </div>

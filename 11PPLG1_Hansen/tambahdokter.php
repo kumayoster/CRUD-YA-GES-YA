@@ -3,37 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Tambah Dokter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="row mt-3">
-            <div class="col-4">
-                <h3>Tambah Data Dokter</h3>
-                <form action="koneksi.php" method="POST">
-                    <div class="form-group">
-                        <label for="idDokter">ID Dokter</label>
-                        <input type="text" class="form-control mb-3" name="idDokter" placeholder="need your id">
-                    </div>
-                    <div class="form-group">
-                        <label for="nmDokter">Nama Dokter</label>
-                        <input type="text" class="form-control mb-3" name="nmDokter" placeholder="namek">
-                    </div>
-                    <div class="form-group">
-                        <label for="spesialisasi">skillnya apa dek?</label>
-                        <input type="text" class="form-control mb-3" name="spesialisasi" placeholder="sekil">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="noTelp">No Telp</label>
-                        <textarea name="noTelp" id="noTelp" cols="5" rows="3" placeholder="no telpnya say" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="submit" name="simpan1" value="Simpan" class="form-control btn btn-primary">
-                    </div>
-                </form>
-            </div>
+<div class="container">
+    <h3>Tambah Dokter</h3>
+    <form action="controller_dokter.php" method="POST">
+        <div class="mb-3">
+            <label for="idDokter" class="form-label">ID Dokter</label>
+            <input type="text" class="form-control" id="idDokter" name="idDokter" required>
         </div>
-    </div>
+        <div class="mb-3">
+            <label for="nmDokter" class="form-label">Nama Dokter</label>
+            <input type="text" class="form-control" id="nmDokter" name="nmDokter" required>
+        </div>
+        <div class="mb-3">
+            <label for="spesialisasi" class="form-label">Spesialisasi</label>
+            <input type="text" class="form-control" id="spesialisasi" name="spesialisasi" required>
+        </div>
+        <div class="mb-3">
+            <label for="noTelp" class="form-label">No. Telepon</label>
+            <input type="text" class="form-control" id="noTelp" name="noTelp" required>
+        </div>
+        <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+    </form>
+</div>
 </body>
 </html>

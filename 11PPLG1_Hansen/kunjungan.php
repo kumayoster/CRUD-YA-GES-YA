@@ -58,41 +58,53 @@
 
     <div class="row mt-3">
         <div class="col">
-            <table class="table table-striped table-hover table-sm">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID Kunjungan</th>
-                        <th>idPasien</th>
-                        <th>idDokter</th>
-                        <th>tanggal</th>
-                        <th>Keluhan</th>
-                    </tr>
-                </thead>
-                 <tbody>
-                    <?php
-                    include 'koneksi.php';
-                    $no = 1;
-                    $hasil = $koneksi->query("SELECT * FROM kunjungan");
-                    while ($row = $hasil->fetch_assoc()) {
-                    ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $row['idKunjungan']; ?></td>
-                        <td><?= $row['idPasien']; ?></td>
-                        <td><?= $row['idDokter']; ?></td>
-                        <td><?= $row['tanggal']; ?></td>
-                        <td><?= $row['keluhan']; ?></td>
-                        <td>
-                            <a href="editkunjungan.php?edit=<?= $row['idKunjungan']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm" onclick="return hapus('<?= $row['idKunjungan']; ?>')">Hapus</a>
-                        </td>
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+        <table class="table table-striped table-hover table-sm">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>ID Kunjungan</th>
+                <th>ID Pasien</th>
+                <th>ID Dokter</th>
+                <th>Tanggal</th>
+                <th>Keluhan</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+        include 'koneksi.php';  // Include the connection file
+
+        $link = koneksi();
+        // Query to fetch visit data
+        $query = "SELECT * FROM kunjungan";
+        $result = mysqli_query($link, $query);
+
+        // Check if there are any rows
+        if ($result && mysqli_num_rows($result) > 0) {
+            $no = 1;  // Row number initialization
+            while ($data = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>{$no}</td>";
+                echo "<td>{$data['idKunjungan']}</td>";
+                echo "<td>{$data['idPasien']}</td>";
+                echo "<td>{$data['idDokter']}</td>";
+                echo "<td>{$data['tanggal']}</td>";
+                echo "<td>{$data['keluhan']}</td>";
+                echo "<td>
+                        <a href='editkunjungan.php?edit={$data['idKunjungan']}' class='btn btn-warning btn-sm'>Edit</a>
+                        <a href='controller_kunjungan.php?idKunjungan={$data['idKunjungan']}' class='btn btn-danger btn-sm'>Hapus</a>
+                      </td>";
+                echo "</tr>";
+                $no++;  // Increment row number
+            }
+        } else {
+            echo "<tr><td colspan='7'>No data available.</td></tr>";
+        }
+
+        mysqli_close($link);
+        ?>
+        </tbody>
+    </table>
         </div>
     </div>
 </div>

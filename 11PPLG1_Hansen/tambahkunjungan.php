@@ -3,41 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Tambah Kunjungan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="row mt-3">
-            <div class="col-4">
-                <h3>Tambah Data Kunjungan</h3>
-                <form action="koneksi.php" method="POST">
-                    <div class="form-group">
-                        <label for="idKunjungan">ID Kunjungan</label>
-                        <input type="text" class="form-control mb-3" name="idKunjungan" placeholder="Bikin ID-nya">
-                    </div>
-                    <div class="form-group">
-                        <label for="idPasien">ID Pasien</label>
-                        <input type="text" class="form-control mb-3" name="idPasien" placeholder="ID Pasien">
-                    </div>
-                    <div class="form-group">
-                        <label for="idDokter">ID Dokter</label>
-                        <input type="text" class="form-control mb-3" name="idDokter" placeholder="ID Dokter">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="tanggal">Tanggal</label>
-                        <input type="date" class="form-control mb-3" name="tanggal">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="keluhan">Keluhan</label>
-                        <input type="text" class="form-control mb-3" name="keluhan" placeholder="Keluhan">
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="submit" name="simpan2" value="Simpan2" class="form-control btn btn-primary">
-                    </div>
-                </form>
-            </div>
+<div class="container">
+    <h3>Tambah Kunjungan</h3>
+    <form action="controller_kunjungan.php" method="POST">
+        <div class="mb-3">
+            <label for="idKunjungan" class="form-label">ID Kunjungan</label>
+            <input type="text" class="form-control" id="idKunjungan" name="idKunjungan" required>
         </div>
-    </div>
+        <div class="mb-3">
+            <label for="idPasien" class="form-label">ID Pasien</label>
+            <input type="text" class="form-control" id="idPasien" name="idPasien" required>
+        </div>
+        <div class="mb-3">
+            <label for="idDokter" class="form-label">ID Dokter</label>
+            <input type="text" class="form-control" id="idDokter" name="idDokter" required>
+        </div>
+        <div class="mb-3">
+            <label for="tanggal" class="form-label">Tanggal</label>
+            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+        </div>
+        <div class="mb-3">
+            <label for="keluhan" class="form-label">Keluhan</label>
+            <textarea class="form-control" id="keluhan" name="keluhan" required></textarea>
+        </div>
+        <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+    </form>
+</div>
 </body>
 </html>

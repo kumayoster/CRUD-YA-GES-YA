@@ -1,3 +1,8 @@
+<?php
+include 'koneksi.php';  // Include the database connection file
+$link = koneksi();  // Establish a connection to the database
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,22 +30,21 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item">
-            <a href="index.html" class="nav-link mb-2" aria-current="page">home</a>
-        </li>
-        <li class="nav-item">
-            <a href="dokter.php" class="nav-link mb-2" aria-current="page">Dokter</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link mb-2" aria-current="page">Pasien</a>
-        </li>
-        <li class="nav-item">
-            <a href="kunjungan.php" class="nav-link mb-2" aria-current="page">kunjungan</a>
-        </li>
-    </ul>
-</div>
-
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link mb-2" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dokter.php" class="nav-link mb-2" aria-current="page">Dokter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link mb-2" aria-current="page">Pasien</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kunjungan.php" class="nav-link mb-2" aria-current="page">Kunjungan</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -69,12 +73,11 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                 <tbody>
+                <tbody>
                     <?php
-                    include 'koneksi.php';
-                    $no = 1;
-                    $hasil = $koneksi->query("SELECT * FROM pasien");
-                    while ($row = $hasil->fetch_assoc()) {
+                    $no = 1;  // Initialize row number
+                    $hasil = $link->query("SELECT * FROM pasien");  // Execute query to fetch patient data
+                    while ($row = $hasil->fetch_assoc()) {  // Fetch each row of data
                     ?>
                     <tr>
                         <td><?= $no++; ?></td>
